@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Rune_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 24dfb420975fbdd46a4cee880ef1ba1c, type: 3}
+    - {fileID: 2800000, guid: 3490303026a2de84799037dce12c8d51, type: 3}
+    - {fileID: 2800000, guid: f8487da45a1ac3642b96ad92c7c1a092, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 24dfb420975fbdd46a4cee880ef1ba1c, type: 3}
+  - {fileID: 21300000, guid: 3490303026a2de84799037dce12c8d51, type: 3}
+  - {fileID: 21300000, guid: f8487da45a1ac3642b96ad92c7c1a092, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Rune_1
+  - Rune_2
+  - Runes_Floor
+  m_RenderDataMap: {}
+  m_Tag: Rune_Atlas
+  m_IsVariant: 0
