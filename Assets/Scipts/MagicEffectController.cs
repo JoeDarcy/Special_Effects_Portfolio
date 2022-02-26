@@ -48,9 +48,6 @@ public class MagicEffectController : MonoBehaviour
     private List<GameObject> enemiesInRange = new();
     private GameObject enemy = null;
 
-    // Y offset of effect on enemy (aligns effect on enemy)
-    private float effectYOffset = 0.5f;
-
     // Player variables
     private GameObject player = null;
 
