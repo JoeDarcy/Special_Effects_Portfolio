@@ -51,9 +51,15 @@ public class MagicEffectController : MonoBehaviour
     // Y offset of effect on enemy (aligns effect on enemy)
     private float effectYOffset = 0.5f;
 
+    // Player variables
+    private GameObject player = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Get reference to the player transform
+        player = GameObject.FindGameObjectWithTag("Player");
+
         // Set play effect buttons to false on start (prevent unwanted effect instantiation)
         summonEditorButtonPressed = false;     // Summon effect
         attackEditorButtonPressed = false;     // Attack effect
@@ -133,21 +139,19 @@ public class MagicEffectController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		enemy = other.transform.parent.gameObject;
-
-        if (other.CompareTag("Enemy"))
+		if (other.CompareTag("Enemy"))
         {
-	        enemiesInRange.Add(enemy);
+	        enemy = other.transform.parent.gameObject;
+            enemiesInRange.Add(enemy);
         }
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		enemy = other.transform.parent.gameObject;
-
 		if (other.CompareTag("Enemy"))
 		{
-			enemiesInRange.Remove(enemy);
+			enemy = other.transform.parent.gameObject;
+            enemiesInRange.Remove(enemy);
 		}
 	}
 
@@ -183,7 +187,7 @@ public class MagicEffectController : MonoBehaviour
 	    // Instantiate summon instance
 	    if (summonEditorButtonPressed || healEditorButtonPressed || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
 	    {
-		    magicEffectInstance = Instantiate(baseMagicEffect);
+		    magicEffectInstance = Instantiate(baseMagicEffect, player.transform);
 		    SetEffectInstanceColour(magicEffectColour, magicEffectInstance, effectTypeName);
         }
 	    else if (attackEditorButtonPressed || darkEditorButtonPressed || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -191,7 +195,7 @@ public class MagicEffectController : MonoBehaviour
             // Get all the enemies in the scene
             foreach (GameObject enemy in enemiesInRange)
             {
-	            magicEffectInstance = Instantiate(baseMagicEffect, new Vector3(enemy.transform.position.x, enemy.transform.position.y - effectYOffset, enemy.transform.position.z), Quaternion.identity);
+	            magicEffectInstance = Instantiate(baseMagicEffect, enemy.transform);
 	            SetEffectInstanceColour(magicEffectColour,magicEffectInstance, effectTypeName);
             }
 	    }
