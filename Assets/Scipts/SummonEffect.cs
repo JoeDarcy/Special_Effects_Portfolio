@@ -18,17 +18,24 @@ public class SummonEffect : MonoBehaviour
     [SerializeField] private bool audioOn = true;
     private AudioSource summonSoundEffect = null;
 
+    // Play Effect Button
+    private bool editorButtonPressed = false;
+
 
     // Light reference and dimmer timer
     private Light effectLight = null;
-    public float timer = 100.0f;        // Privatise
-    public bool startTimer = false;     // Privatise
+    private float timer = 9.0f;      
+    private bool startTimer = false;     
+
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set play effect button to false on start
+        editorButtonPressed = false;
+
         // Set effect colour and lock alpha at 70%
-	    changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, 0.7f);
+        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, 0.7f);
 
         // Get reference to the summon effect main modules for colour assignment (exclude "Lock_Colour" tagged particle systems )
         summonEffectMainModule = summonEffect.GetComponentInChildren<ParticleSystem>().main;
@@ -43,10 +50,6 @@ public class SummonEffect : MonoBehaviour
 		        summonEffectMainModule.startColor = changeEffectColour;
             }
         }
-
-        // Access and set the colour component (change individual colours)
-        //changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, 0.7f);
-        //summonEffectMainModule.startColor = (changeEffectColour);
 
         // Get effect light and set colour and intensity
         effectLight = summonEffect.GetComponentInChildren<Light>();
@@ -67,8 +70,6 @@ public class SummonEffect : MonoBehaviour
         {
             summonSoundEffect.enabled = false; ;
         }
-
-
     }
 
     // Update is called once per frame
@@ -80,21 +81,33 @@ public class SummonEffect : MonoBehaviour
 		    timer -= Time.deltaTime;
         }
 	    // Dim light
-        if (timer <= 0 && effectLight.intensity > 0.0f)
+        if (timer <= 0 && effectLight.spotAngle > 0.0f)
         {
             startTimer = false;
-	        effectLight.intensity -= 0.01f;     // Not working in here but does outside sort of
+	        effectLight.spotAngle -= 0.1f;     // Not working in here but does outside sort of
         }
 
 
 
         // Trigger summon incantation 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || editorButtonPressed)
 	    {
+            // Instantiate summon instance
 		    summonIncantationInstance = Instantiate(summonEffect);
 
             // Start countdown timer for light intensity
             startTimer = true;
+
+            // Reset editor button pressed bool
+            editorButtonPressed = false;
 	    }
+    }
+
+
+    // Button function to play effect in editor
+    public void PlayEffect()
+    {
+	    // Set editor button pressed bool to true
+	    editorButtonPressed = true;
     }
 }
