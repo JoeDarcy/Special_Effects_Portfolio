@@ -92,8 +92,10 @@ public class SummonEffect : MonoBehaviour
         // Trigger summon incantation 
         if (Input.GetKeyDown(KeyCode.Space) || editorButtonPressed)
 	    {
+            // Get player location
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
             // Instantiate summon instance
-		    summonIncantationInstance = Instantiate(summonEffect);
+            summonIncantationInstance = Instantiate(summonEffect, player.transform.position, Quaternion.identity);
 
             // Start countdown timer for light intensity
             startTimer = true;
