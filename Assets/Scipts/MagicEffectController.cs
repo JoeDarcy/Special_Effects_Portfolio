@@ -63,7 +63,7 @@ public class MagicEffectController : MonoBehaviour
         healEditorButtonPressed = false;       // Heal effect
         darkEditorButtonPressed = false;       // Dark effect
 
-        // Set effect colour and lock alpha at 70%
+        // Set effect colour and lock alpha at 70% (this is how the effect looks best)
         summonEffectColour = new Color(summonEffectColour.r, summonEffectColour.g, summonEffectColour.b, 0.7f);
         attackEffectColour = new Color(attackEffectColour.r, attackEffectColour.g, attackEffectColour.b, 0.7f);
         healEffectColour = new Color(healEffectColour.r, healEffectColour.g, healEffectColour.b, 0.7f);
@@ -134,6 +134,7 @@ public class MagicEffectController : MonoBehaviour
         }
     }
 
+    // Add enemies in range of atttacks to list
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
@@ -143,7 +144,8 @@ public class MagicEffectController : MonoBehaviour
         }
 	}
 
-	private void OnTriggerExit(Collider other)
+    // Remove enemies that leave range of atttacks from list
+    private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
 		{
@@ -152,7 +154,7 @@ public class MagicEffectController : MonoBehaviour
 		}
 	}
 
-    // Button function to play effect in editor
+    // Button functions to play effects in editor
     public void PlaySummonEffect()
     {
         // Set editor summon button pressed bool to true
@@ -181,9 +183,10 @@ public class MagicEffectController : MonoBehaviour
     // Instantiate magic effect function
     private bool InstantiateMagicEffect(Color magicEffectColour, string effectTypeName, bool editorButtonPressed)
     {
-	    // Instantiate summon instance
+	    // Instantiate effect instance
 	    if (summonEditorButtonPressed || healEditorButtonPressed || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
 	    {
+            // Player effects (summon and heal)
 		    magicEffectInstance = Instantiate(baseMagicEffect, player.transform);
 		    SetEffectInstanceColour(magicEffectColour, magicEffectInstance, effectTypeName);
         }
@@ -192,6 +195,7 @@ public class MagicEffectController : MonoBehaviour
             // Get all the enemies in the scene
             foreach (GameObject enemy in enemiesInRange)
             {
+                // Attack effects (attack and dark)
 	            magicEffectInstance = Instantiate(baseMagicEffect, enemy.transform);
 	            SetEffectInstanceColour(magicEffectColour,magicEffectInstance, effectTypeName);
             }
