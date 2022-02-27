@@ -957,7 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonEffect: {fileID: 5741478044069980687, guid: 1e9ccb2ed153d49a5b8bc4d7fe6a7d24, type: 3}
   changeEffectColour: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7411765}
-  audioOn: 0
+  audioOn: 1
 --- !u!4 &821877832
 Transform:
   m_ObjectHideFlags: 0
