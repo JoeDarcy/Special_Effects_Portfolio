@@ -10,10 +10,19 @@ public class SummonEffect : MonoBehaviour
     [SerializeField] private GameObject summonEffect = null;
     private GameObject summonIncantationInstance = null;
 
+    // Spell effect activation key
+    [SerializeField] private KeyCode key = KeyCode.Space;
+
     // Visual effect variables
     [Tooltip("Set the colour of the summon incantation")]
     [SerializeField] private Color changeEffectColour;
     private ParticleSystem.MainModule summonEffectMainModule;
+
+    // Set alpha range between range (0-70%)
+    [Tooltip("Set the alpha transparency of the colour of the summon incantation")]
+    [Range(0.0f, 70.0f)]
+    [SerializeField] private float setAlpha = 70.0f;
+
     [Tooltip("Set audio for the summon incantation on or off")]
     [SerializeField] private bool audioOn = true;
     private AudioSource summonSoundEffect = null;
@@ -34,8 +43,8 @@ public class SummonEffect : MonoBehaviour
         // Set play effect button to false on start
         editorButtonPressed = false;
 
-        // Set effect colour and lock alpha at 70%
-        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, 0.7f);
+        // Set effect colour and lock alpha at 70% or lower
+        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, setAlpha);
 
         // Get reference to the summon effect main modules for colour assignment (exclude "Lock_Colour" tagged particle systems )
         summonEffectMainModule = summonEffect.GetComponentInChildren<ParticleSystem>().main;
@@ -90,7 +99,7 @@ public class SummonEffect : MonoBehaviour
 
 
         // Trigger summon incantation 
-        if (Input.GetKeyDown(KeyCode.Space) || editorButtonPressed)
+        if (Input.GetKeyDown(key) || editorButtonPressed)
 	    {
             // Get player location
             GameObject player = GameObject.FindGameObjectWithTag("Player");
