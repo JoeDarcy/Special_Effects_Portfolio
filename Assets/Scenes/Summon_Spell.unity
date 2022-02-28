@@ -1257,6 +1257,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5850160907579914618, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
+      propertyPath: audioOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850160907579914618, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
+      propertyPath: setAlpha
+      value: 59.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850160907579914618, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
+      propertyPath: changeEffectColour.b
+      value: 0.6236518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850160907579914618, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
+      propertyPath: changeEffectColour.g
+      value: 0.10062885
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850160907579914618, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
+      propertyPath: changeEffectColour.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5850160907579914619, guid: 3d7cf822006834a759cb7f22d7430c61, type: 3}
       propertyPath: m_Name
       value: Ring_Effect_Controller
