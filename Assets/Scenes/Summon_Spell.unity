@@ -820,7 +820,7 @@ MonoBehaviour:
   attackEffectColour: {r: 0.8207547, g: 0.15227835, b: 0.17757215, a: 0}
   healEffectColour: {r: 0.32212183, g: 0.8490566, b: 0.117479436, a: 0}
   darkEffectColour: {r: 0.22687191, g: 0.080989644, b: 0.3962264, a: 0}
-  audioOn: 0
+  audioOn: 1
 --- !u!135 &622007734
 SphereCollider:
   m_ObjectHideFlags: 0
