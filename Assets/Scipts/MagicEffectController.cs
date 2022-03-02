@@ -9,17 +9,36 @@ public class MagicEffectController : MonoBehaviour
     [SerializeField] private GameObject baseMagicEffect = null;
     private GameObject magicEffectInstance = null;
 
+    // Sprites for each particle system that uses texture sheet animation for sprite rendering
+    [Tooltip("Set custom sprite for this effect. \nTo use default sprite leave this field blank.")]
+    [SerializeField] private Sprite customFloorRunes = null;              // Floor runes
+    [Tooltip("Set custom sprite for this effect. \nTo use default sprite leave this field blank.")]
+    [SerializeField] private Sprite customFloatingFloorRunes = null;      // Floating floor runes
+    [Tooltip("Set custom sprite for this effect. \nTo use default sprite leave this field blank.")]
+    [SerializeField] private Sprite customRisingRunes = null;             // Rising runes
+
     // Visual effect variables
     [Tooltip("Set the colour of the summon incantation")]       // Summon
     [SerializeField] private Color summonEffectColour;
+    // Set opacity range between range (10% - 70%)
+    [Tooltip("Set the opacity percentage of the effect colour of the incantation (10% - 70%)")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float summonOpacityPercentage = 70.0f;
+    // Light intensity
+    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float lightIntensity = 0.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate summon spell effect")]
     [SerializeField] private KeyCode summonActivationKey = KeyCode.LeftArrow;
-    private ParticleSystem.MainModule magicEffectMainModule;
     private string summonEffectTypeName = "Summon_Effect_(Instance)";
 
     [Tooltip("Set the colour of the attack incantation")]       // Attack
     [SerializeField] private Color attackEffectColour;
+    // Set opacity range between range (10% - 70%)
+    [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float attackOpacityPercentage = 70.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate attack spell effect")]
     [SerializeField] private KeyCode attackActivationKey = KeyCode.RightArrow;
@@ -27,6 +46,10 @@ public class MagicEffectController : MonoBehaviour
 
     [Tooltip("Set the colour of the heal incantation")]         // Heal
     [SerializeField] private Color healEffectColour;
+    // Set opacity range between range (10% - 70%)
+    [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float healOpacityPercentage = 70.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate heal spell effect")]
     [SerializeField] private KeyCode healActivationKey = KeyCode.UpArrow;
@@ -34,10 +57,18 @@ public class MagicEffectController : MonoBehaviour
 
     [Tooltip("Set the colour of the dark incantation")]         // Dark
     [SerializeField] private Color darkEffectColour;
+    // Set opacity range between range (10% - 70%)
+    [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float darkOpacityPercentage = 70.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate dark spell effect")]
     [SerializeField] private KeyCode darkActivationKey = KeyCode.DownArrow;
     private string darkEffectTypeName = "Dark_Effect_(Instance)";
+
+    // Particle system module variables
+    private ParticleSystem.MainModule magicEffectMainModule;
+    private ParticleSystem.TextureSheetAnimationModule magicEffectTextureSheetModule;
 
     // Audio controls
     [Tooltip("Set audio for the summon incantation on or off")]
@@ -72,15 +103,15 @@ public class MagicEffectController : MonoBehaviour
         darkEditorButtonPressed = false;       // Dark effect
 
         // Set effect colour and lock alpha at 70% (this is how the effect looks best)
-        summonEffectColour = new Color(summonEffectColour.r, summonEffectColour.g, summonEffectColour.b, 0.7f);
-        attackEffectColour = new Color(attackEffectColour.r, attackEffectColour.g, attackEffectColour.b, 0.7f);
-        healEffectColour = new Color(healEffectColour.r, healEffectColour.g, healEffectColour.b, 0.7f);
-        darkEffectColour = new Color(darkEffectColour.r, darkEffectColour.g, darkEffectColour.b, 0.7f);
+        summonEffectColour = new Color(summonEffectColour.r, summonEffectColour.g, summonEffectColour.b, summonOpacityPercentage / 100);
+        attackEffectColour = new Color(attackEffectColour.r, attackEffectColour.g, attackEffectColour.b, attackOpacityPercentage / 100);
+        healEffectColour = new Color(healEffectColour.r, healEffectColour.g, healEffectColour.b, healOpacityPercentage / 100);
+        darkEffectColour = new Color(darkEffectColour.r, darkEffectColour.g, darkEffectColour.b, darkOpacityPercentage / 100);
 
         // Get effect light and set colour and intensity
         summonEffectLight = baseMagicEffect.GetComponentInChildren<Light>();
         summonEffectLight.color = summonEffectColour;
-        summonEffectLight.intensity = 1.0f;
+        summonEffectLight.intensity = lightIntensity / 100;
 
         // Set audio on or off
         summonSoundEffect = baseMagicEffect.GetComponentInChildren<AudioSource>();
@@ -177,6 +208,7 @@ public class MagicEffectController : MonoBehaviour
             // Player effects (summon and heal)
 		    magicEffectInstance = Instantiate(baseMagicEffect, player.transform);
 		    SetEffectInstanceColour(magicEffectColour, magicEffectInstance, effectTypeName);
+            SetEffectCustomSprite();
         }
 	    else if (attackEditorButtonPressed || darkEditorButtonPressed || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
 	    {
@@ -208,11 +240,43 @@ public class MagicEffectController : MonoBehaviour
 
 	    foreach (ParticleSystem summonParticleSystem in allChildParticleSystems)
 	    {
-		    if (!summonParticleSystem.gameObject.CompareTag("Lock_Colour"))
+		    if (!summonParticleSystem.gameObject.CompareTag("Floating_Floor_Runes") || !summonParticleSystem.gameObject.CompareTag("Rising_Runes"))
 		    {
 			    magicEffectMainModule = summonParticleSystem.GetComponent<ParticleSystem>().main;
 			    magicEffectMainModule.startColor = magicEffectColour;
 		    }
 	    }
+    }
+
+    // Set any assigned custom sprites to each editable particel effect that uses texture sheet animaiton module
+    private void SetEffectCustomSprite()
+    {
+        magicEffectTextureSheetModule = magicEffectInstance.GetComponentInChildren<ParticleSystem>().textureSheetAnimation;
+
+        ParticleSystem[] allChildParticleSystems = magicEffectInstance.GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem summonParticleSystem in allChildParticleSystems)
+        {
+            // Floor runes
+            if (summonParticleSystem.gameObject.CompareTag("Floor_Runes") && customFloorRunes != null)
+            {
+                magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
+                magicEffectTextureSheetModule.SetSprite(0, customFloorRunes);
+            }
+
+            // Floating floor Runes
+            if (summonParticleSystem.gameObject.CompareTag("Floating_Floor_Runes") && customFloatingFloorRunes != null)
+            {
+                magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
+                magicEffectTextureSheetModule.SetSprite(0, customFloatingFloorRunes);
+            }
+
+            // Floating floor Runes
+            if (summonParticleSystem.gameObject.CompareTag("Rising_Runes") && customRisingRunes != null)
+            {
+                magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
+                magicEffectTextureSheetModule.SetSprite(0, customRisingRunes);
+            }
+        }
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Lock_Colour
   - Enemy
+  - Floor_Runes
+  - Floating_Floor_Runes
+  - Rising_Runes
   layers:
   - Default
   - TransparentFX
