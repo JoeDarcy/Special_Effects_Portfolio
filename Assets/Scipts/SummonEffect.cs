@@ -11,17 +11,18 @@ public class SummonEffect : MonoBehaviour
     private GameObject summonIncantationInstance = null;
 
     // Spell effect activation key
-    [SerializeField] private KeyCode key = KeyCode.Space;
+    [Tooltip("Set the key used to activate spell effect")]
+    [SerializeField] private KeyCode activationKey = KeyCode.Space;
 
     // Visual effect variables
     [Tooltip("Set the colour of the summon incantation")]
     [SerializeField] private Color changeEffectColour;
     private ParticleSystem.MainModule summonEffectMainModule;
 
-    // Set alpha range between range (0-70%)
-    [Tooltip("Set the alpha transparency of the colour of the summon incantation")]
-    [Range(0.0f, 70.0f)]
-    [SerializeField] private float setAlpha = 70.0f;
+    // Set alpha range between range (10% - 70%)
+    [Tooltip("Set the alpha transparency percentage of the colour of the summon incantation")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float setAlphaPercentage = 70.0f;
 
     [Tooltip("Set audio for the summon incantation on or off")]
     [SerializeField] private bool audioOn = true;
@@ -44,7 +45,7 @@ public class SummonEffect : MonoBehaviour
         editorButtonPressed = false;
 
         // Set effect colour and lock alpha at 70% or lower
-        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, setAlpha);
+        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, setAlphaPercentage / 100);
 
         // Get reference to the summon effect main modules for colour assignment (exclude "Lock_Colour" tagged particle systems )
         summonEffectMainModule = summonEffect.GetComponentInChildren<ParticleSystem>().main;
@@ -99,7 +100,7 @@ public class SummonEffect : MonoBehaviour
 
 
         // Trigger summon incantation 
-        if (Input.GetKeyDown(key) || editorButtonPressed)
+        if (Input.GetKeyDown(activationKey) || editorButtonPressed)
 	    {
             // Get player location
             GameObject player = GameObject.FindGameObjectWithTag("Player");

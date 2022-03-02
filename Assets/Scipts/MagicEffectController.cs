@@ -12,19 +12,31 @@ public class MagicEffectController : MonoBehaviour
     // Visual effect variables
     [Tooltip("Set the colour of the summon incantation")]       // Summon
     [SerializeField] private Color summonEffectColour;
+    // Spell effect activation key
+    [Tooltip("Set the key used to activate summon spell effect")]
+    [SerializeField] private KeyCode summonActivationKey = KeyCode.LeftArrow;
     private ParticleSystem.MainModule magicEffectMainModule;
     private string summonEffectTypeName = "Summon_Effect_(Instance)";
 
     [Tooltip("Set the colour of the attack incantation")]       // Attack
     [SerializeField] private Color attackEffectColour;
+    // Spell effect activation key
+    [Tooltip("Set the key used to activate attack spell effect")]
+    [SerializeField] private KeyCode attackActivationKey = KeyCode.RightArrow;
     private string attackEffectTypeName = "Attack_Effect_(Instance)";
 
-    [Tooltip("Set the colour of the heal incantation")]       // Heal
+    [Tooltip("Set the colour of the heal incantation")]         // Heal
     [SerializeField] private Color healEffectColour;
+    // Spell effect activation key
+    [Tooltip("Set the key used to activate heal spell effect")]
+    [SerializeField] private KeyCode healActivationKey = KeyCode.UpArrow;
     private string healEffectTypeName = "Heal_Effect_(Instance)";
 
-    [Tooltip("Set the colour of the dark incantation")]       // Dark
+    [Tooltip("Set the colour of the dark incantation")]         // Dark
     [SerializeField] private Color darkEffectColour;
+    // Spell effect activation key
+    [Tooltip("Set the key used to activate dark spell effect")]
+    [SerializeField] private KeyCode darkActivationKey = KeyCode.DownArrow;
     private string darkEffectTypeName = "Dark_Effect_(Instance)";
 
     // Audio controls
@@ -43,10 +55,6 @@ public class MagicEffectController : MonoBehaviour
     private Light summonEffectLight = null;
     //private float timer = 9.0f;
     //private bool startTimer = false;
-
-    // Enemy detection
-    private List<GameObject> enemiesInRange = new();
-    private GameObject enemy = null;
 
     // Player variables
     private GameObject player = null;
@@ -106,53 +114,33 @@ public class MagicEffectController : MonoBehaviour
 
 
         // Trigger summon incantation 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || summonEditorButtonPressed)
+        if (Input.GetKeyDown(summonActivationKey) || summonEditorButtonPressed)
         {
             // Instantiate summon magic effect
             summonEditorButtonPressed = InstantiateMagicEffect(summonEffectColour, summonEffectTypeName, summonEditorButtonPressed);
         }
 
         // Trigger attack incantation 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || attackEditorButtonPressed)
+        if (Input.GetKeyDown(attackActivationKey) || attackEditorButtonPressed)
         {
             // Instantiate attack magic effect
             attackEditorButtonPressed = InstantiateMagicEffect(attackEffectColour, attackEffectTypeName, attackEditorButtonPressed);
         }
 
         // Trigger heal incantation 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || healEditorButtonPressed)
+        if (Input.GetKeyDown(healActivationKey) || healEditorButtonPressed)
         {
             // Instantiate heal magic effect
             healEditorButtonPressed = InstantiateMagicEffect(healEffectColour, healEffectTypeName, healEditorButtonPressed);
         }
 
         // Trigger dark incantation 
-        if (Input.GetKeyDown(KeyCode.DownArrow) || darkEditorButtonPressed)
+        if (Input.GetKeyDown(darkActivationKey) || darkEditorButtonPressed)
         {
             // Instantiate dark magic effect
             darkEditorButtonPressed = InstantiateMagicEffect(darkEffectColour, darkEffectTypeName, darkEditorButtonPressed);
         }
     }
-
-    // Add enemies in range of atttacks to list
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.CompareTag("Enemy"))
-        {
-	        enemy = other.transform.parent.gameObject;
-            enemiesInRange.Add(enemy);
-        }
-	}
-
-    // Remove enemies that leave range of atttacks from list
-    private void OnTriggerExit(Collider other)
-	{
-		if (other.CompareTag("Enemy"))
-		{
-			enemy = other.transform.parent.gameObject;
-            enemiesInRange.Remove(enemy);
-		}
-	}
 
     // Button functions to play effects in editor
     public void PlaySummonEffect()
@@ -193,7 +181,7 @@ public class MagicEffectController : MonoBehaviour
 	    else if (attackEditorButtonPressed || darkEditorButtonPressed || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
 	    {
             // Get all the enemies in the scene
-            foreach (GameObject enemy in enemiesInRange)
+            foreach (GameObject enemy in EnemyRangeList.enemiesInRange)
             {
                 // Attack effects (attack and dark)
 	            magicEffectInstance = Instantiate(baseMagicEffect, enemy.transform);
