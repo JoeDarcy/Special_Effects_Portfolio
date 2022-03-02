@@ -511,6 +511,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
+      propertyPath: darkLightIntensity
+      value: 61.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
+      propertyPath: healLightIntensity
+      value: 60.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
+      propertyPath: attackLightIntensity
+      value: 58.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
+      propertyPath: summonLightIntensity
+      value: 57.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
       propertyPath: customFloatingFloorRunes
       value: 
       objectReference: {fileID: 0}

@@ -25,9 +25,10 @@ public class MagicEffectController : MonoBehaviour
     [Range(10.0f, 70.0f)]
     [SerializeField] private float summonOpacityPercentage = 70.0f;
     // Light intensity
+    private Light summonEffectLight = null;
     [Tooltip("Set the intesity of the light (10% - 70%)")]
     [Range(10.0f, 70.0f)]
-    [SerializeField] private float lightIntensity = 0.0f;
+    [SerializeField] private float summonLightIntensity = 0.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate summon spell effect")]
     [SerializeField] private KeyCode summonActivationKey = KeyCode.LeftArrow;
@@ -39,6 +40,11 @@ public class MagicEffectController : MonoBehaviour
     [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float attackOpacityPercentage = 70.0f;
+    // Light intensity
+    private Light attackEffectLight = null;
+    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float attackLightIntensity = 0.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate attack spell effect")]
     [SerializeField] private KeyCode attackActivationKey = KeyCode.RightArrow;
@@ -50,6 +56,11 @@ public class MagicEffectController : MonoBehaviour
     [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float healOpacityPercentage = 70.0f;
+    // Light intensity
+    private Light healEffectLight = null;
+    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float healLightIntensity = 0.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate heal spell effect")]
     [SerializeField] private KeyCode healActivationKey = KeyCode.UpArrow;
@@ -61,6 +72,11 @@ public class MagicEffectController : MonoBehaviour
     [Tooltip("Set the opacity percentage of the effect colour of the incantation")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float darkOpacityPercentage = 70.0f;
+    // Light intensity
+    private Light darkEffectLight = null;
+    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Range(10.0f, 70.0f)]
+    [SerializeField] private float darkLightIntensity = 0.0f;
     // Spell effect activation key
     [Tooltip("Set the key used to activate dark spell effect")]
     [SerializeField] private KeyCode darkActivationKey = KeyCode.DownArrow;
@@ -80,12 +96,6 @@ public class MagicEffectController : MonoBehaviour
     private bool attackEditorButtonPressed = false;     // Attack effect
     private bool healEditorButtonPressed = false;       // Heal effect
     private bool darkEditorButtonPressed = false;       // Dark effect
-
-
-    // Light reference and dimmer timer
-    private Light summonEffectLight = null;
-    //private float timer = 9.0f;
-    //private bool startTimer = false;
 
     // Player variables
     private GameObject player = null;
@@ -109,9 +119,21 @@ public class MagicEffectController : MonoBehaviour
         darkEffectColour = new Color(darkEffectColour.r, darkEffectColour.g, darkEffectColour.b, darkOpacityPercentage / 100);
 
         // Get effect light and set colour and intensity
-        summonEffectLight = baseMagicEffect.GetComponentInChildren<Light>();
+        summonEffectLight = baseMagicEffect.GetComponentInChildren<Light>();       // Summon effect
         summonEffectLight.color = summonEffectColour;
-        summonEffectLight.intensity = lightIntensity / 100;
+        summonEffectLight.intensity = summonLightIntensity / 100;
+
+        attackEffectLight = baseMagicEffect.GetComponentInChildren<Light>();       // Attack effect
+        attackEffectLight.color = summonEffectColour;
+        attackEffectLight.intensity = attackLightIntensity / 100;
+
+        healEffectLight = baseMagicEffect.GetComponentInChildren<Light>();         // Heal effect
+        healEffectLight.color = summonEffectColour;
+        healEffectLight.intensity = healLightIntensity / 100;
+
+        darkEffectLight = baseMagicEffect.GetComponentInChildren<Light>();         // Dark effect
+        darkEffectLight.color = summonEffectColour;
+        darkEffectLight.intensity = darkLightIntensity / 100;
 
         // Set audio on or off
         summonSoundEffect = baseMagicEffect.GetComponentInChildren<AudioSource>();
