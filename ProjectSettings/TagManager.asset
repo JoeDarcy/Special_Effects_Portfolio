@@ -9,6 +9,9 @@ TagManager:
   - Floor_Runes
   - Floating_Floor_Runes
   - Rising_Runes
+  - Default_Floor_Runes
+  - Default_Floating_Floor_Runes
+  - Default_Rising_Runes
   layers:
   - Default
   - TransparentFX

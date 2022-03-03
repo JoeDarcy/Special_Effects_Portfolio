@@ -669,6 +669,10 @@ PrefabInstance:
       value: 60.6
       objectReference: {fileID: 0}
     - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
+      propertyPath: newEffectColour.a
+      value: 0.79607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
       propertyPath: newEffectColour.b
       value: 0
       objectReference: {fileID: 0}
@@ -755,27 +759,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
       propertyPath: lightIntensity
-      value: 70
+      value: 54.9
       objectReference: {fileID: 0}
     - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
       propertyPath: customFloorRunes
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 15ce4a8b72ae84fb79d9940257f964ba, type: 3}
     - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
-      propertyPath: newEffectColour.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
-      propertyPath: newEffectColour.g
+      propertyPath: newEffectColour.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
+      propertyPath: newEffectColour.b
+      value: 0.20198467
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
+      propertyPath: newEffectColour.g
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
       propertyPath: newEffectColour.r
-      value: 0.15395391
+      value: 0.7531038
       objectReference: {fileID: 0}
     - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
       propertyPath: setAlphaPercentage
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896942410698632807, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}
+      propertyPath: summonOpacityPercentage
+      value: 46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81552b93608fa4a5da6b85dec09707df, type: 3}

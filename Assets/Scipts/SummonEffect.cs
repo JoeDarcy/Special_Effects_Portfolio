@@ -118,7 +118,7 @@ public class SummonEffect : MonoBehaviour
             effectLight.intensity = defaultLightIntensity;
 
             // Reset effect sprites to default sprites
-            customFloorRunes = GameObject.FindGameObjectWithTag("Default_Floor_Rune").GetComponent<SpriteRenderer>().sprite;
+            //customFloorRunes = GameObject.FindGameObjectWithTag("Default_Floor_Runes").GetComponent<SpriteRenderer>().sprite;
 
             // Reset "Reset values button pressed" bool
             editorResetValuesButtonPressed = false;
