@@ -27,7 +27,7 @@ public class SummonEffect : MonoBehaviour
 
     // Visual effect variables
     [Tooltip("Set the colour of the summon incantation")]
-    [SerializeField] private Color changeEffectColour;
+    [SerializeField] private Color newEffectColour;
     private ParticleSystem.MainModule summonEffectMainModule;
 
     // Set opacity range between range (10% - 70%)
@@ -45,47 +45,36 @@ public class SummonEffect : MonoBehaviour
     [SerializeField] private bool audioOn = true;
     private AudioSource summonSoundEffect = null;
 
-    // Play Effect Button
-    private bool editorButtonPressed = false;
+    // "Play" effect button bool
+    private bool editorPlayButtonPressed = false;
 
+    // "Reset effect values to default" button bool
+    private bool editorResetValuesButtonPressed = false;
+
+    // Default values
+    private float defaultOpacity = 0.7f;
+    private float defaultLightIntensity = 0.7f;
 
     // Light reference and dimmer timer
-    private Light effectLight = null;
-    private float timer = 9.0f;      
-    private bool startTimer = false;     
+    private Light effectLight = null;    
 
-    // 
 
     // Start is called before the first frame update
     void Start()
     {
         // Set play effect button to false on start
-        editorButtonPressed = false;
+        editorPlayButtonPressed = false;
+        // Set "Reset effect values" button to false on start
+        editorResetValuesButtonPressed = false;
+
 
         // Set effect colour and lock alpha at 70% or lower
-        changeEffectColour = new Color(changeEffectColour.r, changeEffectColour.g, changeEffectColour.b, summonOpacityPercentage / 100);
-
-        // Get reference to the summon effect main modules for colour assignment (exclude "Lock_Colour" tagged particle systems )
-        summonEffectMainModule = summonEffect.GetComponentInChildren<ParticleSystem>().main;
-
-	    ParticleSystem[] allChildParticleSystems = summonEffect.GetComponentsInChildren<ParticleSystem>();
-
-        foreach (ParticleSystem summonParticleSystem in allChildParticleSystems)
-        {
-	        if (!summonParticleSystem.gameObject.CompareTag("Lock_Colour"))
-	        {
-		        summonEffectMainModule = summonParticleSystem.GetComponent<ParticleSystem>().main;
-		        summonEffectMainModule.startColor = changeEffectColour;
-            }
-        }
+        ChangeEffectColour(summonOpacityPercentage);
 
         // Get effect light and set colour and intensity
         effectLight = summonEffect.GetComponentInChildren<Light>();
-        effectLight.color = changeEffectColour;
+        effectLight.color = newEffectColour;
         effectLight.intensity = lightIntensity / 100;
-        
-        
-        // Remember to change the light size / intensity over time in Update()
 
         // Set audio on or off
         summonSoundEffect = summonEffect.GetComponentInChildren<AudioSource>();
@@ -103,42 +92,71 @@ public class SummonEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Countdown for light dimming
-	    if (startTimer == true)
-	    {
-		    timer -= Time.deltaTime;
-        }
-	    // Dim light
-        if (timer <= 0 && effectLight.spotAngle > 0.0f)
-        {
-            startTimer = false;
-	        effectLight.spotAngle -= 0.1f;     // Not working in here but does outside sort of
-        }
-
-
-
         // Trigger summon incantation 
-        if (Input.GetKeyDown(activationKey) || editorButtonPressed)
+        if (Input.GetKeyDown(activationKey) || editorPlayButtonPressed)
 	    {
             // Get player location
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             // Instantiate summon instance
             summonIncantationInstance = Instantiate(summonEffect, player.transform.position, Quaternion.identity);
             SetEffectCustomSprite();
-            // Start countdown timer for light intensity
-            startTimer = true;
 
             // Reset editor button pressed bool
-            editorButtonPressed = false;
+            editorPlayButtonPressed = false;
 	    }
+
+        // Reset effect values to default
+        if (editorResetValuesButtonPressed)
+        {
+            //magicEffectTextureSheetModule.RemoveSprite(0);  // Set up a sprite to reference as a default on the effect prefab / private non editable
+            Debug.Log("Resetting to defualt values");
+
+            // Reset opacity of the base colour
+            ChangeEffectColour(defaultOpacity);
+
+            // Reset light intensity to default value
+            effectLight.intensity = defaultLightIntensity;
+
+            // Reset effect sprites to default sprites
+            customFloorRunes = GameObject.FindGameObjectWithTag("Default_Floor_Rune").GetComponent<SpriteRenderer>().sprite;
+
+            // Reset "Reset values button pressed" bool
+            editorResetValuesButtonPressed = false;
+        }
     }
 
+
+    // Change effect colour
+    private void ChangeEffectColour(float summonOpacityPercentage)
+    {
+        newEffectColour = new Color(newEffectColour.r, newEffectColour.g, newEffectColour.b, summonOpacityPercentage / 100);
+
+        // Get reference to the summon effect main modules for colour assignment (exclude "Lock_Colour" tagged particle systems )
+        summonEffectMainModule = summonEffect.GetComponentInChildren<ParticleSystem>().main;
+
+        ParticleSystem[] allChildParticleSystems = summonEffect.GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem summonParticleSystem in allChildParticleSystems)
+        {
+            if (!summonParticleSystem.gameObject.CompareTag("Lock_Colour"))
+            {
+                summonEffectMainModule = summonParticleSystem.GetComponent<ParticleSystem>().main;
+                summonEffectMainModule.startColor = newEffectColour;
+            }
+        }
+    }
 
     // Button function to play effect in editor
     public void PlayEffect()
     {
-	    // Set editor button pressed bool to true
-	    editorButtonPressed = true;
+	    // Set editor "Play" button pressed bool to true
+	    editorPlayButtonPressed = true;
+    }
+
+    public void ResetEffectValuesToDefault()
+    {
+        // Set editor "Reset effect values to default" button pressed bool to true
+        editorResetValuesButtonPressed = true;
     }
 
     // Set any assigned custom sprites to each editable particel effect that uses texture sheet animaiton module
@@ -151,21 +169,21 @@ public class SummonEffect : MonoBehaviour
         foreach (ParticleSystem summonParticleSystem in allChildParticleSystems)
         {
             // Floor runes
-            if (summonParticleSystem.gameObject.CompareTag("Floor_Runes"))
+            if (summonParticleSystem.gameObject.CompareTag("Floor_Runes") && customFloorRunes != null)
             {
                 magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
                 magicEffectTextureSheetModule.SetSprite(0, customFloorRunes);
             }
 
             // Floating floor Runes
-            if (summonParticleSystem.gameObject.CompareTag("Floating_Floor_Runes"))
+            if (summonParticleSystem.gameObject.CompareTag("Floating_Floor_Runes") && customFloatingFloorRunes != null)
             {
                 magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
                 magicEffectTextureSheetModule.SetSprite(0, customFloatingFloorRunes);
             }
 
             // Floating floor Runes
-            if (summonParticleSystem.gameObject.CompareTag("Rising_Runes"))
+            if (summonParticleSystem.gameObject.CompareTag("Rising_Runes") && customRisingRunes != null)
             {
                 magicEffectTextureSheetModule = summonParticleSystem.GetComponent<ParticleSystem>().textureSheetAnimation;
                 magicEffectTextureSheetModule.SetSprite(0, customRisingRunes);

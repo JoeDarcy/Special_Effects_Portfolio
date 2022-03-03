@@ -39,7 +39,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2501441678428975344}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dfcbe19ef7f9d43db9b407105727bc77, type: 3}
@@ -390,7 +390,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.73616076, g: 0, b: 1, a: 1}
-      maxColor: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+      maxColor: {r: 1, g: 0, b: 0, a: 0.7}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5278,7 +5278,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+      maxColor: {r: 1, g: 0, b: 0, a: 0.7}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15072,7 +15072,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+      maxColor: {r: 1, g: 0, b: 0, a: 0.7}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19960,7 +19960,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+      maxColor: {r: 1, g: 0, b: 0, a: 0.7}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -24866,7 +24866,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.36521074, g: 0.101960786, b: 0.62352943, a: 1}
-      maxColor: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+      maxColor: {r: 1, g: 0, b: 0, a: 0.7}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -29516,7 +29516,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.764151, g: 0.2125909, b: 0.1477839, a: 0.7}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.7}
   m_Intensity: 0.606
   m_Range: 4.69
   m_SpotAngle: 1

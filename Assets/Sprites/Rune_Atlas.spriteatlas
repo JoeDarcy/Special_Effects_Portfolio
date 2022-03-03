@@ -46,7 +46,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Rune_1
   - Rune_2
-  - Runes_Wall
+  - Rising_Runes
   m_RenderDataMap: {}
   m_Tag: Rune_Atlas
   m_IsVariant: 0
