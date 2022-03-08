@@ -937,11 +937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7863434475120743937, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
       propertyPath: playerAttackRange
-      value: 1.6
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 7863434475120743938, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
       propertyPath: m_Radius
-      value: 1.6
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 7863434475120743948, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
       propertyPath: m_Name
