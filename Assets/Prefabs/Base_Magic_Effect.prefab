@@ -4880,7 +4880,7 @@ GameObject:
   - component: {fileID: 8376560986253919074}
   - component: {fileID: 8376560986253919005}
   m_Layer: 0
-  m_Name: Floor_Circle
+  m_Name: Floor_Runes
   m_TagString: Floor_Runes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14665,7 +14665,7 @@ GameObject:
   - component: {fileID: 8376560986458921617}
   - component: {fileID: 8376560986458921616}
   m_Layer: 0
-  m_Name: Floor_Runes
+  m_Name: Floating_Floor_Runes
   m_TagString: Floating_Floor_Runes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19602,7 +19602,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.764151, g: 0.6874995, b: 0.14898534, a: 0.7}
+  m_Color: {r: 0.764151, g: 0.6874995, b: 0.14898534, a: 0.60400003}
   m_Intensity: 0.614
   m_Range: 4.69
   m_SpotAngle: 1

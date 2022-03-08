@@ -151,21 +151,6 @@ public class MagicEffectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        // Countdown for light dimming
-        if (startTimer == true)
-        {
-            timer -= Time.deltaTime;
-        }
-        // Dim light
-        if (timer <= 0 && summonEffectLight.spotAngle > 0.0f)
-        {
-            startTimer = false;
-            summonEffectLight.spotAngle -= 0.1f;     // Must refer to newly created prefab instance!!! Fix this. 
-        }
-        */
-
-
         // Trigger summon incantation 
         if (Input.GetKeyDown(summonActivationKey) || summonEditorButtonPressed)
         {

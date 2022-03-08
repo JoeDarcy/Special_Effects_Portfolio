@@ -10,11 +10,19 @@ public class SummonEffectControllerEditor : Editor
 	{
 		DrawDefaultInspector();
 
+		// Script reference
 		SummonEffect summonScript = (SummonEffect)target;
 
+		// Play effecy button
 		if (GUILayout.Button("Play Effect"))
 		{
 			summonScript.PlayEffect();
+		}
+
+		// Reset to default values button
+		if (GUILayout.Button("Reset effect values to default"))
+		{
+			summonScript.ResetEffectValuesToDefault();
 		}
 	}
 }

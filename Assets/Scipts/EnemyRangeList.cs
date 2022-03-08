@@ -22,7 +22,13 @@ public class EnemyRangeList : MonoBehaviour
 		attackRangeSphere.radius = playerAttackRange;
     }
 
-    // Add enemies in range of attacks to list
+    private void Update()
+    {
+        if (playerAttackRange != attackRangeSphere.radius)
+			attackRangeSphere.radius = playerAttackRange;
+	}
+
+    // Add enemies in range of atttacks to list
     private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
@@ -32,7 +38,7 @@ public class EnemyRangeList : MonoBehaviour
 		}
 	}
 
-	// Remove enemies that leave range of attacks from list
+	// Remove enemies that leave range of atttacks from list
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
