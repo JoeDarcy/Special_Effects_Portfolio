@@ -46,13 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMagicEffect: {fileID: 8376560986359438465, guid: 5c850ee788e24cb478e156fd8860040c, type: 3}
+  customFloorRunes: {fileID: 0}
+  customFloatingFloorRunes: {fileID: 0}
+  customRisingRunes: {fileID: 0}
   summonEffectColour: {r: 0.764151, g: 0.6874995, b: 0.14898534, a: 0}
+  summonOpacityPercentage: 70
+  summonLightIntensity: 0
   summonActivationKey: 276
   attackEffectColour: {r: 0.8207547, g: 0.15227835, b: 0.17757215, a: 0}
+  attackOpacityPercentage: 70
+  attackLightIntensity: 44.6
   attackActivationKey: 275
   healEffectColour: {r: 0.32212183, g: 0.8490566, b: 0.117479436, a: 0}
+  healOpacityPercentage: 70
+  healLightIntensity: 53.9
   healActivationKey: 273
   darkEffectColour: {r: 0.22687191, g: 0.080989644, b: 0.3962264, a: 0}
+  darkOpacityPercentage: 70
+  darkLightIntensity: 0
   darkActivationKey: 274
   audioOn: 0
 --- !u!135 &915390574933325188

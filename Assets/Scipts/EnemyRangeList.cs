@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class EnemyRangeList : MonoBehaviour
 {
 	// List of enemies in range of attack
@@ -21,7 +22,7 @@ public class EnemyRangeList : MonoBehaviour
 		attackRangeSphere.radius = playerAttackRange;
     }
 
-    // Add enemies in range of atttacks to list
+    // Add enemies in range of attacks to list
     private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
@@ -31,7 +32,7 @@ public class EnemyRangeList : MonoBehaviour
 		}
 	}
 
-	// Remove enemies that leave range of atttacks from list
+	// Remove enemies that leave range of attacks from list
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Enemy"))

@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
       propertyPath: summonLightIntensity
-      value: 57.9
+      value: 50.2
       objectReference: {fileID: 0}
     - target: {fileID: 915390574933325191, guid: 21fb9136f306745bd9ba7822765730fa, type: 3}
       propertyPath: customFloatingFloorRunes
@@ -861,7 +861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7863434475120743937, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
       propertyPath: playerAttackRange
-      value: 1.12
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863434475120743938, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
+      propertyPath: m_Radius
+      value: 1.57
       objectReference: {fileID: 0}
     - target: {fileID: 7863434475120743948, guid: 03fb4bf4cc91b4e8895ac8bdcb84aafd, type: 3}
       propertyPath: m_Name

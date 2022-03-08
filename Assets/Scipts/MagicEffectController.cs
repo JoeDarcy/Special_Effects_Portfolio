@@ -26,7 +26,7 @@ public class MagicEffectController : MonoBehaviour
     [SerializeField] private float summonOpacityPercentage = 70.0f;
     // Light intensity
     private Light summonEffectLight = null;
-    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Tooltip("Set the intensity of the light (10% - 70%)")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float summonLightIntensity = 0.0f;
     // Spell effect activation key
@@ -42,7 +42,7 @@ public class MagicEffectController : MonoBehaviour
     [SerializeField] private float attackOpacityPercentage = 70.0f;
     // Light intensity
     private Light attackEffectLight = null;
-    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Tooltip("Set the intensity of the light (10% - 70%)")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float attackLightIntensity = 0.0f;
     // Spell effect activation key
@@ -58,7 +58,7 @@ public class MagicEffectController : MonoBehaviour
     [SerializeField] private float healOpacityPercentage = 70.0f;
     // Light intensity
     private Light healEffectLight = null;
-    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Tooltip("Set the intensity of the light (10% - 70%)")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float healLightIntensity = 0.0f;
     // Spell effect activation key
@@ -74,7 +74,7 @@ public class MagicEffectController : MonoBehaviour
     [SerializeField] private float darkOpacityPercentage = 70.0f;
     // Light intensity
     private Light darkEffectLight = null;
-    [Tooltip("Set the intesity of the light (10% - 70%)")]
+    [Tooltip("Set the intensity of the light (10% - 70%)")]
     [Range(10.0f, 70.0f)]
     [SerializeField] private float darkLightIntensity = 0.0f;
     // Spell effect activation key
