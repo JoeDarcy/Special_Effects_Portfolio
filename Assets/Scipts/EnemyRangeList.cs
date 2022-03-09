@@ -10,7 +10,7 @@ public class EnemyRangeList : MonoBehaviour
 	private GameObject enemy = null;
 
 	// Set player attack range between range (0-70%)
-	[Tooltip("Set the attack range of the player, between 0.2f and 3.0f")]
+	[Tooltip("Set the attack range of the player (0.2 - 3.0)")]
 	[Range(0.2f, 3.0f)]
 	[SerializeField] private float playerAttackRange = 1.3f;
 	private SphereCollider attackRangeSphere = null;
