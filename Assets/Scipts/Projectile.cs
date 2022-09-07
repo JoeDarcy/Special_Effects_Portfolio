@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-	[SerializeField] private GameObject projectile;
-	[SerializeField] private float shootForce;
-	private GameObject projectileInstance;
+	[SerializeField] private GameObject explosion;
+	private GameObject explosionInstance;
+	private ParticleSystem effectParticleSystem;
 	
-    // Update is called once per frame
-    void Update()
+	// OnTriggerEnter is called when the Collider other enters the trigger.
+	protected void OnTriggerEnter(Collider other)
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
-	    	projectileInstance = Instantiate(projectile, transform.position, transform.rotation);
-		if (projectileInstance)
-			projectileInstance.GetComponent<Rigidbody>().AddForce(projectileInstance.transform.forward * shootForce);
-    }
+		explosionInstance = Instantiate(explosion, transform.position, transform.rotation);
+		effectParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
+		effectParticleSystem.Stop();
+		Destroy(gameObject, 2.0f);
+	}
 }
