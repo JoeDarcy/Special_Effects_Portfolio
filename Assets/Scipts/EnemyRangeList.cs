@@ -5,8 +5,8 @@ using UnityEngine;
 [ExecuteAlways]
 public class EnemyRangeList : MonoBehaviour
 {
-	// List of enemies in range of attack
-	public static List<GameObject> enemiesInRange = new();
+    // List of enemies in range of attack
+    public static List<GameObject> enemiesInRange = new List<GameObject>();
 	private GameObject enemy = null;
 
 	// Set player attack range between range (0-70%)

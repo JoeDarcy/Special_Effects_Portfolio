@@ -10472,7 +10472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
       propertyPath: lightIntensity
-      value: 60.6
+      value: 48.6
       objectReference: {fileID: 0}
     - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
       propertyPath: newEffectColour.a
@@ -10493,6 +10493,10 @@ PrefabInstance:
     - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
       propertyPath: summonOpacityPercentage
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822190992055947018, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
+      propertyPath: summonOpacityPercentage
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4822190992055947019, guid: 18bfa733c39e0495fb095615d5d13ce3, type: 3}
       propertyPath: m_Name
