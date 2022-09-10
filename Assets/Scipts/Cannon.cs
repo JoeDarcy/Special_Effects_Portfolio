@@ -6,7 +6,10 @@ public class Cannon : MonoBehaviour
 {
 	[SerializeField] private GameObject projectile;
 	[SerializeField] private float shootForce;
+
 	private GameObject projectileInstance;
+
+
 	// Update is called once per frame
 	void Update()
 	{

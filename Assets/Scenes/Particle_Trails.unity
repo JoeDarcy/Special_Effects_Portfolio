@@ -194,14 +194,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099655949}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10.2, z: -83.3}
-  m_LocalScale: {x: 3.64, y: 1, z: 2.31}
+  m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
+  m_LocalPosition: {x: 0, y: 17.5, z: -83.3}
+  m_LocalScale: {x: 3.64, y: 1, z: 3.9115229}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319243760}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: -90}
 --- !u!64 &1099655951
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1172056511}
   - component: {fileID: 1172056510}
+  - component: {fileID: 1172056512}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -312,6 +313,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -7.144, y: 180, z: 0}
+--- !u!114 &1172056512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172056509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fada5e9429d9548b8a552e457a7cf4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1319243760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8356605542384047011, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
