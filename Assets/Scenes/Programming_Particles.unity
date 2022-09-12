@@ -5213,6 +5213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 8356605541899151325, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8356605542384047010, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
       propertyPath: m_Name
       value: Scene
@@ -5267,7 +5271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8356605543134530161, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.377878
+      value: 22.47
       objectReference: {fileID: 0}
     - target: {fileID: 8356605543134530161, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5303,31 +5307,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1af572c25ad4f4640857ab26de04adf9, type: 3}
---- !u!1 &1802536077 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3710241442281604056, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
-  m_PrefabInstance: {fileID: 3710241443744335701}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1802536079
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802536077}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc5d8b7e0dbf8fb4394c5e664c8024f2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3710241443744335701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5335,22 +5314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 429599891004022787, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
-      propertyPath: lerpSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 429599891004022787, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
-      propertyPath: changeSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 429599891004022787, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
-      propertyPath: lerpDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 429599891004022787, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
-      propertyPath: verticalOffset
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3710241442281604056, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
       propertyPath: m_Name
       value: Tentacles
