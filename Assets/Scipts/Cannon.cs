@@ -6,6 +6,7 @@ public class Cannon : MonoBehaviour
 {
 	[SerializeField] private GameObject projectile;
 	[SerializeField] private float shootForce;
+	[SerializeField] private KeyCode fireKey;
 
 	private GameObject projectileInstance;
 
@@ -13,7 +14,7 @@ public class Cannon : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(fireKey))
 		{
 			projectileInstance = Instantiate(projectile, transform.position, transform.rotation);
 		}
