@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gravity_Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 6863623585682458221, guid: ecfa0f61158a32c44a8c515ed81f2f08, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce00126d8a0964de8a5ae745fa02a21a, type: 2}
     - target: {fileID: 6863623585682458222, guid: ecfa0f61158a32c44a8c515ed81f2f08, type: 3}
       propertyPath: lengthInSec
       value: 4
