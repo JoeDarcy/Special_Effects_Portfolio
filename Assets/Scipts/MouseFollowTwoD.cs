@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class MouseFollowTwoD : MonoBehaviour
 {
-    Vector3 mousePosition;
-    public float moveSpeed = 0.1f;
-    Rigidbody rb;
-    private Vector2 position = new Vector2(0.0f, 0.0f);
+    
+    [SerializeField] private float moveSpeed = 0.1f;
+    [SerializeField] private Camera mainCamera;
+    
+    private Vector3 mousePosition;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-	    mousePosition = Input.mousePosition;
-	    mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-	    position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
-    }
+	    mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+	    transform.position = Vector3.Lerp(transform.position, mousePosition, moveSpeed);
 
-	private void FixedUpdate()
-	{
-		rb.MovePosition(position);
-	}
+	    Debug.Log("Mouse: " + mousePosition);
+	    //Debug.Log("Effect: " + transform.position);
+    }
 }
