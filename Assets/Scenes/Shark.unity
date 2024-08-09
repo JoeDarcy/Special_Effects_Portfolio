@@ -5512,6 +5512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basking_Shark_Animated
       objectReference: {fileID: 0}
+    - target: {fileID: 896460188180160645, guid: b287618d71790684d818dec3be26d734, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6363855639906659319, guid: b287618d71790684d818dec3be26d734, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.47
@@ -5536,7 +5540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3710241442281604056, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3710241442281604059, guid: 7ce5493153c65aa43adbb68e419631d8, type: 3}
       propertyPath: m_RootOrder
