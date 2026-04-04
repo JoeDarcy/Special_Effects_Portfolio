@@ -16,7 +16,7 @@ namespace FluxySamples
 
         void FixedUpdate()
         {
-            rb.velocity = container.GetVelocityAt(rb.position);
+            rb.linearVelocity = container.GetVelocityAt(rb.position);
         }
     }
 }

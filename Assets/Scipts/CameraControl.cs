@@ -78,12 +78,12 @@ public class CameraControl : MonoBehaviour
         switch (cameraMode)
         {
             case CameraMode.Free:
-                rigidbody.velocity = transform.TransformDirection(moveVector);
+                rigidbody.linearVelocity = transform.TransformDirection(moveVector);
                 break;
             case CameraMode.Gravity:
                 Vector3 velocity = transform.TransformDirection(moveVector);
-                velocity.y = rigidbody.velocity.y;
-                rigidbody.velocity = velocity;
+                velocity.y = rigidbody.linearVelocity.y;
+                rigidbody.linearVelocity = velocity;
 
                 rigidbody.AddForce(0.0f, jump, 0.0f, ForceMode.Impulse);
                 jump = 0.0f;
